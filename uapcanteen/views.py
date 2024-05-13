@@ -234,59 +234,59 @@ def upload_breakfast(request):
     return render(request, 'breakfastform.html')
 
 
-# def upload_lunch(request):
-#     if request.method == 'POST':
+def upload_lunch(request):
+    if request.method == 'POST':
         
-#         name = request.POST.get('name')
-#         price = request.POST.get('price')
-#         description = request.POST.get('description')
-#         discount = request.POST.get('discount')
-#         rating = request.POST.get('rating')
-#         image = request.FILES.get('image')  
-#         spiciness_level = request.POST.get('spiciness_level')
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        description = request.POST.get('description')
+        discount = request.POST.get('discount')
+        rating = request.POST.get('rating')
+        image = request.FILES.get('image')  
+        spiciness_level = request.POST.get('spiciness_level')
 
         
-#         owner = None
-#         for owner in Owner.objects.all():
-#             if owner.username == request.user.username:
-#                 break
+        owner = None
+        for owner in Owner.objects.all():
+            if owner.username == request.user.username:
+                break
 
         
-#         if not owner:
-#             messages.error(request, 'Owner not found.')
-#             return redirect('upload_lunch')
+        if not owner:
+            messages.error(request, 'Owner not found.')
+            return redirect('upload_lunch')
 
         
-#         if not name or not price or not description or not discount or not rating or not image or not spiciness_level:
-#             messages.error(request, 'Please fill in all required fields.')
-#             return redirect('upload_lunch')
+        if not name or not price or not description or not discount or not rating or not image or not spiciness_level:
+            messages.error(request, 'Please fill in all required fields.')
+            return redirect('upload_lunch')
 
         
-#         try:
-#             discount = int(discount)
-#             rating = float(rating)
-#         except ValueError:
-#             messages.error(request, 'Invalid discount or rating value.')
-#             return redirect('upload_lunch')
+        try:
+            discount = int(discount)
+            rating = float(rating)
+        except ValueError:
+            messages.error(request, 'Invalid discount or rating value.')
+            return redirect('upload_lunch')
 
         
-#         new_lunch = Lunch(
-#             owner=owner,
-#             name=name,
-#             price=price,
-#             description=description,
-#             discount=discount,
-#             rating=rating,
-#             image=image,  
-#             spiciness_level=spiciness_level  
-#         )
-#         new_lunch.save()
+        new_lunch = Lunch(
+            owner=owner,
+            name=name,
+            price=price,
+            description=description,
+            discount=discount,
+            rating=rating,
+            image=image,  
+            spiciness_level=spiciness_level  
+        )
+        new_lunch.save()
 
        
-#         messages.success(request, 'Lunch item uploaded successfully.')
-#         return redirect('dashboard')  
+        messages.success(request, 'Lunch item uploaded successfully.')
+        return redirect('dashboard')  
 
-#     return render(request, 'lunchform.html')
+    return render(request, 'lunchform.html')
 
 def upload_dinner(request):
     if request.method == 'POST':
