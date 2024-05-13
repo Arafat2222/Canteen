@@ -165,9 +165,9 @@ def breakfast(request):
     breakfasts = Breakfast.objects.all()
     return render(request, 'breakfast.html', {'breakfasts': breakfasts})
 
-# def lunch(request):
-#     lunches = Lunch.objects.all()
-#     return render(request, 'lunch.html', {'lunches': lunches})
+def lunch(request):
+    lunches = Lunch.objects.all()
+    return render(request, 'lunch.html', {'lunches': lunches})
 
 def dinner(request):
     dinners = Dinner.objects.all()
