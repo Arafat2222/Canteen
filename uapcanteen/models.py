@@ -66,7 +66,7 @@ class Dinner(models.Model):
     
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    #breakfast = models.ForeignKey(Breakfast, on_delete=models.CASCADE, blank=True, null=True)
+    breakfast = models.ForeignKey(Breakfast, on_delete=models.CASCADE, blank=True, null=True)
     #lunch = models.ForeignKey(Lunch, on_delete=models.CASCADE, blank=True, null=True)
     dinner = models.ForeignKey(Dinner, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField(default=1)
