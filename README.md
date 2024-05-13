@@ -10,7 +10,7 @@
     <li>Navigate to the project directory:</li>
 </ol>
 
-<pre><code>cd UAP_Canteen_Web</code></pre>
+<pre><code>cd UAPCanteen_Web</code></pre>
 
 
 
