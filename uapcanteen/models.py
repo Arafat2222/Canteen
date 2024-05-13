@@ -26,24 +26,24 @@ class Breakfast(models.Model):
     def __str__(self):
         return self.name   
 
-class Lunch(models.Model):
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    price = models.IntegerField()
-    description = models.TextField()
-    image = models.ImageField(upload_to='images/')
-    discount = models.IntegerField()
-    rating = models.FloatField()
-    SPICY_LEVEL_CHOICES = [
-    ('Mild', 'Mild'),
-    ('Medium', 'Medium'),
-    ('Spicy', 'Spicy'),
-    ('Extra Spicy', 'Extra Spicy')
-    ]
-    spiciness_level = models.CharField(max_length=15, choices=SPICY_LEVEL_CHOICES, blank=True, null=True)
+# class Lunch(models.Model):
+#     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=100)
+#     price = models.IntegerField()
+#     description = models.TextField()
+#     image = models.ImageField(upload_to='images/')
+#     discount = models.IntegerField()
+#     rating = models.FloatField()
+#     SPICY_LEVEL_CHOICES = [
+#     ('Mild', 'Mild'),
+#     ('Medium', 'Medium'),
+#     ('Spicy', 'Spicy'),
+#     ('Extra Spicy', 'Extra Spicy')
+#     ]
+#     spiciness_level = models.CharField(max_length=15, choices=SPICY_LEVEL_CHOICES, blank=True, null=True)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 class Dinner(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
@@ -66,8 +66,8 @@ class Dinner(models.Model):
     
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    breakfast = models.ForeignKey(Breakfast, on_delete=models.CASCADE, blank=True, null=True)
-    lunch = models.ForeignKey(Lunch, on_delete=models.CASCADE, blank=True, null=True)
+    #breakfast = models.ForeignKey(Breakfast, on_delete=models.CASCADE, blank=True, null=True)
+    #lunch = models.ForeignKey(Lunch, on_delete=models.CASCADE, blank=True, null=True)
     dinner = models.ForeignKey(Dinner, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField(default=1)
     total_price = models.IntegerField(default=0)
@@ -79,8 +79,8 @@ class Cart(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
-    breakfast = models.ForeignKey(Breakfast, on_delete=models.CASCADE, blank=True, null=True)
-    lunch = models.ForeignKey(Lunch, on_delete=models.CASCADE, blank=True, null=True)
+    #breakfast = models.ForeignKey(Breakfast, on_delete=models.CASCADE, blank=True, null=True)
+   #lunch = models.ForeignKey(Lunch, on_delete=models.CASCADE, blank=True, null=True)
     dinner = models.ForeignKey(Dinner, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField(default=1)
     total_price = models.IntegerField(default=0)
