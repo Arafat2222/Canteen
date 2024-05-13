@@ -345,26 +345,26 @@ def upload_dinner(request):
     return render(request, 'dinnerform.html')
 
 # Views for adding menu items to cart
-# @login_required (login_url='login')
-# def add_to_cart(request, item_type, item_id):
-#     product = None
-#     if item_type == 'breakfast':
-#         product = get_object_or_404(Breakfast, pk=item_id)
-#     elif item_type == 'lunch':
-#         product = get_object_or_404(Lunch, pk=item_id)
-#     elif item_type == 'dinner':
-#         product = get_object_or_404(Dinner, pk=item_id)
-#     else:
-#         return redirect('home')
+@login_required (login_url='login')
+def add_to_cart(request, item_type, item_id):
+    product = None
+    if item_type == 'breakfast':
+        product = get_object_or_404(Breakfast, pk=item_id)
+    elif item_type == 'lunch':
+        product = get_object_or_404(Lunch, pk=item_id)
+    elif item_type == 'dinner':
+        product = get_object_or_404(Dinner, pk=item_id)
+    else:
+        return redirect('home')
 
-#     cart_item, created = Cart.objects.get_or_create(user=request.user, **{f'{item_type}': product}, defaults={'total_price': product.price, 'discount': 0})
+    cart_item, created = Cart.objects.get_or_create(user=request.user, **{f'{item_type}': product}, defaults={'total_price': product.price, 'discount': 0})
 
-#     if not created:
-#         cart_item.quantity += 1
-#         cart_item.total_price = cart_item.quantity * product.price
-#         cart_item.save()
+    if not created:
+        cart_item.quantity += 1
+        cart_item.total_price = cart_item.quantity * product.price
+        cart_item.save()
 
-#     return redirect('view_cart')
+    return redirect('view_cart')
 
 
 def view_cart(request):
