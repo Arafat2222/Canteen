@@ -4,7 +4,7 @@
     <li>Clone the repository:</li>
 </ol>
 
-<pre><code>https://github.com/Arafat2222/Canteen</code></pre>
+<pre><code>https://github.com/Arafat2222/UAPCanteen_Web.git</code></pre>
 
 <ol start="2">
     <li>Navigate to the project directory:</li>
