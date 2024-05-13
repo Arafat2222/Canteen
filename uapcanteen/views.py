@@ -177,9 +177,9 @@ def breakfast_detail(request, id):
     breakfast = get_object_or_404(Breakfast, pk=id)
     return render(request, 'breakfastdetail.html', {'breakfast': breakfast})
 
-# def lunch_detail(request, id):
-#     lunch = get_object_or_404(Lunch, pk=id)
-#     return render(request, 'lunchdetail.html', {'lunch': lunch})
+def lunch_detail(request, id):
+    lunch = get_object_or_404(Lunch, pk=id)
+    return render(request, 'lunchdetail.html', {'lunch': lunch})
 
 def dinner_detail(request, id):
     dinner = get_object_or_404(Dinner, pk=id)
