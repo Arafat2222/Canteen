@@ -165,21 +165,21 @@ def breakfast(request):
     breakfasts = Breakfast.objects.all()
     return render(request, 'breakfast.html', {'breakfasts': breakfasts})
 
-def lunch(request):
-    lunches = Lunch.objects.all()
-    return render(request, 'lunch.html', {'lunches': lunches})
+# def lunch(request):
+#     lunches = Lunch.objects.all()
+#     return render(request, 'lunch.html', {'lunches': lunches})
 
 def dinner(request):
     dinners = Dinner.objects.all()
     return render(request, 'dinner.html', {'dinners': dinners})
 
-def breakfast_detail(request, id):
-    breakfast = get_object_or_404(Breakfast, pk=id)
-    return render(request, 'breakfastdetail.html', {'breakfast': breakfast})
+# def breakfast_detail(request, id):
+#     breakfast = get_object_or_404(Breakfast, pk=id)
+#     return render(request, 'breakfastdetail.html', {'breakfast': breakfast})
 
-def lunch_detail(request, id):
-    lunch = get_object_or_404(Lunch, pk=id)
-    return render(request, 'lunchdetail.html', {'lunch': lunch})
+# def lunch_detail(request, id):
+#     lunch = get_object_or_404(Lunch, pk=id)
+#     return render(request, 'lunchdetail.html', {'lunch': lunch})
 
 def dinner_detail(request, id):
     dinner = get_object_or_404(Dinner, pk=id)
@@ -187,106 +187,106 @@ def dinner_detail(request, id):
 
 # Views for adding menu items
 
-def upload_breakfast(request):
-    if request.method == 'POST':
+# def upload_breakfast(request):
+#     if request.method == 'POST':
         
-        name = request.POST.get('name')
-        price = request.POST.get('price')
-        description = request.POST.get('description')
-        discount = request.POST.get('discount')
-        rating = request.POST.get('rating')
-        image = request.FILES.get('image')  
+#         name = request.POST.get('name')
+#         price = request.POST.get('price')
+#         description = request.POST.get('description')
+#         discount = request.POST.get('discount')
+#         rating = request.POST.get('rating')
+#         image = request.FILES.get('image')  
 
        
-        for owner in Owner.objects.all():
-            if owner.username == request.user.username:
-                break
+#         for owner in Owner.objects.all():
+#             if owner.username == request.user.username:
+#                 break
 
         
-        if not name or not price or not description or not discount or not rating or not image:
-            messages.error(request, 'Please fill in all required fields.')
-            return redirect('upload_breakfast')
+#         if not name or not price or not description or not discount or not rating or not image:
+#             messages.error(request, 'Please fill in all required fields.')
+#             return redirect('upload_breakfast')
 
         
-        try:
-            discount = int(discount)
-            rating = float(rating)
-        except ValueError:
-            messages.error(request, 'Invalid discount or rating value.')
-            return redirect('upload_breakfast')
+#         try:
+#             discount = int(discount)
+#             rating = float(rating)
+#         except ValueError:
+#             messages.error(request, 'Invalid discount or rating value.')
+#             return redirect('upload_breakfast')
 
        
-        new_breakfast = Breakfast(
-            owner=owner,
-            name=name,
-            price=price,
-            description=description,
-            discount=discount,
-            rating=rating,
-            image=image  
-        )
-        new_breakfast.save()
+#         new_breakfast = Breakfast(
+#             owner=owner,
+#             name=name,
+#             price=price,
+#             description=description,
+#             discount=discount,
+#             rating=rating,
+#             image=image  
+#         )
+#         new_breakfast.save()
 
         
-        messages.success(request, 'Breakfast item uploaded successfully.')
-        return redirect('dashboard') 
+#         messages.success(request, 'Breakfast item uploaded successfully.')
+#         return redirect('dashboard') 
 
-    return render(request, 'breakfastform.html')
+#     return render(request, 'breakfastform.html')
 
 
-def upload_lunch(request):
-    if request.method == 'POST':
+# def upload_lunch(request):
+#     if request.method == 'POST':
         
-        name = request.POST.get('name')
-        price = request.POST.get('price')
-        description = request.POST.get('description')
-        discount = request.POST.get('discount')
-        rating = request.POST.get('rating')
-        image = request.FILES.get('image')  
-        spiciness_level = request.POST.get('spiciness_level')
-
-        
-        owner = None
-        for owner in Owner.objects.all():
-            if owner.username == request.user.username:
-                break
+#         name = request.POST.get('name')
+#         price = request.POST.get('price')
+#         description = request.POST.get('description')
+#         discount = request.POST.get('discount')
+#         rating = request.POST.get('rating')
+#         image = request.FILES.get('image')  
+#         spiciness_level = request.POST.get('spiciness_level')
 
         
-        if not owner:
-            messages.error(request, 'Owner not found.')
-            return redirect('upload_lunch')
+#         owner = None
+#         for owner in Owner.objects.all():
+#             if owner.username == request.user.username:
+#                 break
 
         
-        if not name or not price or not description or not discount or not rating or not image or not spiciness_level:
-            messages.error(request, 'Please fill in all required fields.')
-            return redirect('upload_lunch')
+#         if not owner:
+#             messages.error(request, 'Owner not found.')
+#             return redirect('upload_lunch')
 
         
-        try:
-            discount = int(discount)
-            rating = float(rating)
-        except ValueError:
-            messages.error(request, 'Invalid discount or rating value.')
-            return redirect('upload_lunch')
+#         if not name or not price or not description or not discount or not rating or not image or not spiciness_level:
+#             messages.error(request, 'Please fill in all required fields.')
+#             return redirect('upload_lunch')
 
         
-        new_lunch = Lunch(
-            owner=owner,
-            name=name,
-            price=price,
-            description=description,
-            discount=discount,
-            rating=rating,
-            image=image,  
-            spiciness_level=spiciness_level  
-        )
-        new_lunch.save()
+#         try:
+#             discount = int(discount)
+#             rating = float(rating)
+#         except ValueError:
+#             messages.error(request, 'Invalid discount or rating value.')
+#             return redirect('upload_lunch')
+
+        
+#         new_lunch = Lunch(
+#             owner=owner,
+#             name=name,
+#             price=price,
+#             description=description,
+#             discount=discount,
+#             rating=rating,
+#             image=image,  
+#             spiciness_level=spiciness_level  
+#         )
+#         new_lunch.save()
 
        
-        messages.success(request, 'Lunch item uploaded successfully.')
-        return redirect('dashboard')  
+#         messages.success(request, 'Lunch item uploaded successfully.')
+#         return redirect('dashboard')  
 
-    return render(request, 'lunchform.html')
+#     return render(request, 'lunchform.html')
 
 def upload_dinner(request):
     if request.method == 'POST':
@@ -345,26 +345,26 @@ def upload_dinner(request):
     return render(request, 'dinnerform.html')
 
 # Views for adding menu items to cart
-@login_required (login_url='login')
-def add_to_cart(request, item_type, item_id):
-    product = None
-    if item_type == 'breakfast':
-        product = get_object_or_404(Breakfast, pk=item_id)
-    elif item_type == 'lunch':
-        product = get_object_or_404(Lunch, pk=item_id)
-    elif item_type == 'dinner':
-        product = get_object_or_404(Dinner, pk=item_id)
-    else:
-        return redirect('home')
+# @login_required (login_url='login')
+# def add_to_cart(request, item_type, item_id):
+#     product = None
+#     if item_type == 'breakfast':
+#         product = get_object_or_404(Breakfast, pk=item_id)
+#     elif item_type == 'lunch':
+#         product = get_object_or_404(Lunch, pk=item_id)
+#     elif item_type == 'dinner':
+#         product = get_object_or_404(Dinner, pk=item_id)
+#     else:
+#         return redirect('home')
 
-    cart_item, created = Cart.objects.get_or_create(user=request.user, **{f'{item_type}': product}, defaults={'total_price': product.price, 'discount': 0})
+#     cart_item, created = Cart.objects.get_or_create(user=request.user, **{f'{item_type}': product}, defaults={'total_price': product.price, 'discount': 0})
 
-    if not created:
-        cart_item.quantity += 1
-        cart_item.total_price = cart_item.quantity * product.price
-        cart_item.save()
+#     if not created:
+#         cart_item.quantity += 1
+#         cart_item.total_price = cart_item.quantity * product.price
+#         cart_item.save()
 
-    return redirect('view_cart')
+#     return redirect('view_cart')
 
 
 def view_cart(request):
