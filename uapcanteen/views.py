@@ -185,53 +185,53 @@ def dinner_detail(request, id):
     dinner = get_object_or_404(Dinner, pk=id)
     return render(request, 'dinnerdetail.html', {'dinner': dinner})
 
-# Views for adding menu items
+#Views for adding menu items
 
-# def upload_breakfast(request):
-#     if request.method == 'POST':
+def upload_breakfast(request):
+    if request.method == 'POST':
         
-#         name = request.POST.get('name')
-#         price = request.POST.get('price')
-#         description = request.POST.get('description')
-#         discount = request.POST.get('discount')
-#         rating = request.POST.get('rating')
-#         image = request.FILES.get('image')  
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        description = request.POST.get('description')
+        discount = request.POST.get('discount')
+        rating = request.POST.get('rating')
+        image = request.FILES.get('image')  
 
        
-#         for owner in Owner.objects.all():
-#             if owner.username == request.user.username:
-#                 break
+        for owner in Owner.objects.all():
+            if owner.username == request.user.username:
+                break
 
         
-#         if not name or not price or not description or not discount or not rating or not image:
-#             messages.error(request, 'Please fill in all required fields.')
-#             return redirect('upload_breakfast')
+        if not name or not price or not description or not discount or not rating or not image:
+            messages.error(request, 'Please fill in all required fields.')
+            return redirect('upload_breakfast')
 
         
-#         try:
-#             discount = int(discount)
-#             rating = float(rating)
-#         except ValueError:
-#             messages.error(request, 'Invalid discount or rating value.')
-#             return redirect('upload_breakfast')
+        try:
+            discount = int(discount)
+            rating = float(rating)
+        except ValueError:
+            messages.error(request, 'Invalid discount or rating value.')
+            return redirect('upload_breakfast')
 
        
-#         new_breakfast = Breakfast(
-#             owner=owner,
-#             name=name,
-#             price=price,
-#             description=description,
-#             discount=discount,
-#             rating=rating,
-#             image=image  
-#         )
-#         new_breakfast.save()
+        new_breakfast = Breakfast(
+            owner=owner,
+            name=name,
+            price=price,
+            description=description,
+            discount=discount,
+            rating=rating,
+            image=image  
+        )
+        new_breakfast.save()
 
         
-#         messages.success(request, 'Breakfast item uploaded successfully.')
-#         return redirect('dashboard') 
+        messages.success(request, 'Breakfast item uploaded successfully.')
+        return redirect('dashboard') 
 
-#     return render(request, 'breakfastform.html')
+    return render(request, 'breakfastform.html')
 
 
 # def upload_lunch(request):
